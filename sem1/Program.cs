@@ -8,6 +8,8 @@ class Program
     */
     static void Main()
     {
+Exc1.Solution();
+Exc2.Solution();
 Exc3.Solution();
     }
 }
