@@ -9,7 +9,8 @@ namespace sem1.src;
 public static class Exc2{
     static readonly string routes = @"Public\test_pr2.txt";
     public static void Solution(){
-        string lookingFor = @"\ben\b";
+        Console.WriteLine("------------------Ejercicio2-------------");
+        string lookingFor = @"(?<=^|\s)en(?=\s)";
         using (StreamReader file = File.OpenText(routes))
         {
             string line;
@@ -17,14 +18,13 @@ public static class Exc2{
             int linesReaded = 0;
             while ((line = file.ReadLine()) is not null){
                 linesReaded++;
-                Match match = Regex.Match(line.ToLower(), lookingFor);
-                count += (match.Success is true) ? 1 : 0;
+                MatchCollection match = Regex.Matches(line.ToLower(), lookingFor);
+                count += match.Count>0 ? match.Count : 0;
             }
             
-            Console.WriteLine($@"
-            lines readed: {linesReaded}
-            'en' found: {count}:
-            ");
+    Console.WriteLine($@"
+    lines readed: {linesReaded}
+    'en' found: {count}");
 
 
         }
