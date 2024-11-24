@@ -7,6 +7,7 @@ namespace sem1.src;
 public class Exc3{
     public static List<(string,string)> db= new List<(string, string)>();
     public static void Solution(){        
+    Console.WriteLine("------------------Ejercicio3-------------");
         Generate();
         int intentos=0;
         while (intentos<3){//O(n*2)

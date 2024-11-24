@@ -11,6 +11,7 @@ máximo, (ii) el valor mínimo, (iii) la suma de los enteros ingresados y (iv) e
 */
 public static class Exc1{
     public static void Solution(){
+        Console.WriteLine("------------------Ejercicio1-------------");
         int total=0,
         min=0,
         max=0;
