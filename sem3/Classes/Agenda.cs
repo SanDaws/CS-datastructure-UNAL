@@ -13,6 +13,9 @@ public class Agenda{
         Registro = new Usuario[capacity];
         
     }
+    public Usuario[] getRegistros(){
+        return Registro;
+    }
     public bool Agregar(Usuario U){
         int response= Buscar(U.Id);
         if (response != -1 && noReg<Registro.Length){
@@ -55,6 +58,10 @@ public class Agenda{
         }
 
         return false;
+    }
+    public Usuario show(int index){
+        return Registro[index];
+
     }
     public void ToFile(){
 
@@ -105,6 +112,7 @@ public class Agenda{
                 Agenda.Agregar(user);
              
             }
+
             
         }
     }

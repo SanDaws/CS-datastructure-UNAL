@@ -26,6 +26,7 @@ Agenda agenda;
                 break;
                 case ConsoleKey.D2:
                 agenda= new Agenda(12);
+                Programimport(agenda);
                 break;
 
                 default:
@@ -38,18 +39,32 @@ Agenda agenda;
     }
     private static void Programexport(Agenda Agenda){
         seed(Agenda);
+        Buscar(Agenda);
         Agenda.ToFile();
-        deleting(Agenda);
         
     }
     private static void deleting(Agenda Agenda){
         Console.WriteLine("------ deleting ");
-        Console.WriteLine("numero de identificacion a eliminar");
+        Console.Write("numero de identificacion a eliminar");
         long res= long.Parse(Console.ReadLine());
         Console.WriteLine(Agenda.Eliminar(res)?"eliminado satiasfactoriamente":"Elemento no encotnrado");
         }
+    private static void Buscar(Agenda Agenda){
+        Console.WriteLine("------ searching ");
+        Console.Write("numero de identificacion a buscar");
+        long res= long.Parse(Console.ReadLine());
+        int i=Agenda.Buscar(res);
+        Console.WriteLine(Agenda.show(i).ToString());
+        }
     private static void Programimport(Agenda agenda){
         agenda.Import();
+        foreach (Usuario user in agenda.getRegistros())
+        {
+            Console.WriteLine(user.ToString());
+        }
+        deleting(agenda);
+        Console.WriteLine("To agenda");
+        agenda.ToFile();
 
         
     }
