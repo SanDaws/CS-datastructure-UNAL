@@ -10,7 +10,7 @@ public static class Exc2{
     static readonly string routes = @"Public\test_pr2.txt";
     public static void Solution(){
         Console.WriteLine("------------------Ejercicio2-------------");
-        string lookingFor = @"(?<=^|\s)en(?=\s)";
+        string lookingFor = @"(?<=^|\s)no(?=\s)";
         using (StreamReader file = File.OpenText(routes))
         {
             string line;
