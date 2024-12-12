@@ -5,7 +5,7 @@ namespace sem3;
 
 class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
 Agenda agenda;
         Console.WriteLine($"""
@@ -21,6 +21,7 @@ Agenda agenda;
             {
                 case ConsoleKey.D1:
                 agenda= new Agenda(12);
+                Programexport(agenda);
 
                 break;
                 case ConsoleKey.D2:
@@ -35,19 +36,24 @@ Agenda agenda;
         }
 
     }
-    private void Programexport(Agenda Agenda){
+    private static void Programexport(Agenda Agenda){
         seed(Agenda);
-        Console.WriteLine();
-        Console.WriteLine(Agenda.Buscar(36246816846));
         Agenda.ToFile();
+        deleting(Agenda);
         
     }
-    private void Programimport(Agenda agenda){
+    private static void deleting(Agenda Agenda){
+        Console.WriteLine("------ deleting ");
+        Console.WriteLine("numero de identificacion a eliminar");
+        long res= long.Parse(Console.ReadLine());
+        Console.WriteLine(Agenda.Eliminar(res)?"eliminado satiasfactoriamente":"Elemento no encotnrado");
+        }
+    private static void Programimport(Agenda agenda){
         agenda.Import();
 
         
     }
-    private void seed(Agenda Agenda){
+    private static void seed(Agenda Agenda){
         Fecha f1= new Fecha(21,12,2000);
         Fecha f3= new Fecha(12,1,2000);
         Fecha f2= new Fecha(15,10,2000);
