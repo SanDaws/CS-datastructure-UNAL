@@ -1,5 +1,4 @@
-﻿using sem3.Classes;
-using Sem3.Classes;
+﻿using Sem3.Classes;
 
 namespace sem3;
 
@@ -7,40 +6,64 @@ class Program
 {
     public static void Main(string[] args)
     {
-Agenda agenda;
-        Console.WriteLine($"""
-        menu:
-            1: importar
-            2: exportar
-            3: salir
-        """);
-        while (true)
-        {
-            ConsoleKeyInfo option= Console.ReadKey();
-            switch (option.Key)
-            {
-                case ConsoleKey.D1:
-                agenda= new Agenda(12);
-                Programexport(agenda);
-
-                break;
-                case ConsoleKey.D2:
-                agenda= new Agenda(12);
-                Programimport(agenda);
-                break;
-
-                default:
-                Console.WriteLine("invalidkey");
-                break;
-            }
-            
-        }
+        
 
     }
-    private static void Programexport(Agenda Agenda){
-        seed(Agenda);
-        Buscar(Agenda);
-        Agenda.ToFile();
+    public static void MainMenu(){
+        Agenda agenda;
+        Console.WriteLine($"""
+        menu:
+            1: exportar
+            2: importar
+            3: salir
+        """);
+    
+        ConsoleKeyInfo option= Console.ReadKey();
+        switch (option.Key)
+        {
+            case ConsoleKey.D1:
+            Programexport();
+
+            break;
+            case ConsoleKey.D2:
+            agenda= new Agenda(12);
+            Programimport(agenda);
+
+            break;
+
+            default:
+            Console.WriteLine("invalidkey");
+            MainMenu();
+            break;
+        }
+        
+        
+    }
+    private static void Programexport(){
+        Agenda Agend;
+        Agend=seed();
+        Console.WriteLine("press any key to continue...");
+        Console.ReadKey();
+        Usuario[] agn= Agend.getRegistros();
+        Console.Clear();
+        Console.WriteLine($"""
+            1: buscar
+        """);
+        
+        Buscar(Agend);
+        Agend.ToFile();
+        
+    }
+    private static void Programimport(Agenda agenda){
+        agenda.Import();
+        foreach (Usuario user in agenda.getRegistros())
+        {
+            Console.WriteLine(user.Format());
+        }
+        deleting(agenda);
+        Console.WriteLine("To agenda");
+        agenda.ToFile();
+
         
     }
     private static void deleting(Agenda Agenda){
@@ -54,21 +77,14 @@ Agenda agenda;
         Console.Write("numero de identificacion a buscar");
         long res= long.Parse(Console.ReadLine());
         int i=Agenda.Buscar(res);
-        Console.WriteLine(Agenda.show(i).ToString());
-        }
-    private static void Programimport(Agenda agenda){
-        agenda.Import();
-        foreach (Usuario user in agenda.getRegistros())
-        {
-            Console.WriteLine(user.ToString());
-        }
-        deleting(agenda);
-        Console.WriteLine("To agenda");
-        agenda.ToFile();
-
+        if (i > 0){Console.WriteLine(i-1);}
         
-    }
-    private static void seed(Agenda Agenda){
+        }
+    
+    private static Agenda seed(){
+        Console.WriteLine("seeding");
+        Agenda Agenda = new Agenda(7);
+        Console.WriteLine(Agenda.getRegistros().Length);
         Fecha f1= new Fecha(21,12,2000);
         Fecha f3= new Fecha(12,1,2000);
         Fecha f2= new Fecha(15,10,2000);
@@ -86,12 +102,19 @@ Agenda agenda;
         Usuario usuario4 = new Usuario(46246816846, "Ana Torres", f4, "Barranquilla", 2233445566L, "ana.torres@example.com", direccion4);
         Usuario usuario5 = new Usuario(56246816846 ,"María López", f5, "Cartagena", 3344556677L, "maria.lopez@example.com", direccion5);
         
-        Agenda.Agregar(usuario1);
-        Agenda.Agregar(usuario2);
-        Agenda.Agregar(usuario3);
-        Agenda.Agregar(usuario4);
-Agenda.Agregar(usuario5);
+        bool ag1=Agenda.Agregar(usuario1);
+        Console.WriteLine("seed: {0}", ag1?"succede":"failed");
+        bool ag2=Agenda.Agregar(usuario2);
+        Console.WriteLine("seed: {0}", ag2?"succede":"failed");
+        bool ag3=Agenda.Agregar(usuario3);
+        Console.WriteLine("seed: {0}", ag3?"succede":"failed");
+        bool ag4=Agenda.Agregar(usuario4);
+        Console.WriteLine("seed: {0}", ag4?"succede":"failed");
+        bool ag5=Agenda.Agregar(usuario5);
+        Console.WriteLine("seed: {0}", ag5?"succede":"failed");
         
+        if (ag1&& ag2 && ag3 && ag4 && ag5){Console.WriteLine("succesfully seeded");}
+        return Agenda;
     }
 
 }

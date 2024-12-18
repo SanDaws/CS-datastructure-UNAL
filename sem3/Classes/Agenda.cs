@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Sem3.Classes;
 
-namespace sem3.Classes;
+
+namespace Sem3.Classes;
 public class Agenda{
     string filePath = @"Public\agenda.txt";
     private Usuario[] Registro;
@@ -18,7 +18,7 @@ public class Agenda{
     }
     public bool Agregar(Usuario U){
         int response= Buscar(U.Id);
-        if (response != -1 && noReg<Registro.Length){
+        if (response == -1 && noReg<Registro.Length){
             Registro[noReg]= U;
             noReg ++;
             return true;
@@ -27,12 +27,12 @@ public class Agenda{
         return false;
     }
     public int Buscar(long id){
-        if (id > Registro.Length -1){
+        if ( noReg<1 ){
         return -1;
         }
-        for (int i = 0; i < Registro.Length; i++){
+        for (int i = 0; i < noReg; i++){
             bool ida = Registro[i].Id == id;
-            int index = Registro.Length - 1 - i;
+            int index = noReg - 1 - i;
             bool vuelta = Registro[index].Id == id;
             if (index == i && !ida && !vuelta){
                 return -1;
@@ -47,6 +47,7 @@ public class Agenda{
             }
         }
         return -1;
+        
     }
     public bool Eliminar(long id){
         int response= Buscar(id);
