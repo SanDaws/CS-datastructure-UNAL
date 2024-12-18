@@ -73,8 +73,8 @@ public class Agenda{
 
                 foreach (Usuario user in Registro)
                 {
-                    string content= user.Format();
-                File.AppendAllText(filePath, content);
+                    string content= user.Format()+ Environment.NewLine;
+                    File.AppendAllText(filePath,content);
                 }
 
                 Console.WriteLine("El contenido se ha escrito exitosamente.");
