@@ -6,7 +6,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-        
+        MainMenu();
 
     }
     public static void MainMenu(){
@@ -46,12 +46,12 @@ class Program
         Console.ReadKey();
         Usuario[] agn= Agend.getRegistros();
         Console.Clear();
+        Agend.ToFile();
         Console.WriteLine($"""
             1: buscar
         """);
         
         Buscar(Agend);
-        Agend.ToFile();
         
     }
     private static void Programimport(Agenda agenda){

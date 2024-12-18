@@ -1,0 +1,5 @@
+10156851203 Juan Pérez Bogotá 1234567890 juan.perez@example.com 21-12-2000 Calle 45/#23-56/La Castellana/Bogotá/Edificio Panorama/101 
+26246816846 Lisa Simpson Springfield 9876543210 lisa.simpson@example.com 15-10-2000 Avenida Siempre Viva/#742/Springfield Central/Springfield/Torre A/12B 
+36246816846 Carlos Gómez Medellín 1122334455 carlos.gomez@example.com 12-1-2000 Calle 8/#56-78/El Poblado/Medellín/Residencias El Pino/304 
+46246816846 Ana Torres Barranquilla 2233445566 ana.torres@example.com 12-1-2000 Carrera 10/#20-30/San Isidro/Barranquilla/Edificio Azul/402 
+56246816846 María López Cartagena 3344556677 maria.lopez@example.com 15-10-2000 Calle Principal/#1A-99/Centro Histórico/Cartagena/Conjunto Colonial/B2 
