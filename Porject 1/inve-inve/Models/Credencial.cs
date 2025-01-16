@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace inve_inve.Models;
 public class Credencial
 {
-    private long Cedula { get; set; }
+    public long Cedula { get; set; }
     private string Pass { get; set; }
     private Role Role { get; set; }
     private Credencial() { }
@@ -23,6 +23,9 @@ public class Credencial
         Pass = obj[1];
         Role = (obj[2]=="ADMINISTRADOR")?Role.ADMINISTRADOR:Role.ADMINISTRADOR;
 
+    }
+    public bool verifyPassword(string pss){
+        return pss == Pass; 
     }
 
     public override string ToString(){
