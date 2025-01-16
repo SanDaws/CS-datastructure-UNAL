@@ -12,7 +12,7 @@ namespace inve_inve.Data;
         public static List<string> UploadFile(string route){
             List<string> eachLane= new List<string>();
             using (StreamReader Archive=File.OpenText(route)){
-                string line;
+                string? line;
                 while ((line=Archive.ReadLine()) is not null){
                     eachLane.Add(line);
                 }
@@ -32,6 +32,9 @@ namespace inve_inve.Data;
             else
             {
                 Console.WriteLine("El archivo especificado no existe.");
+                Console.WriteLine("Creando Archivo...");
+                File.Create(route);
+                SaveFile(route,list);
             }
         }
         catch (Exception ex)
