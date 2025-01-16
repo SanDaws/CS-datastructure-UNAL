@@ -16,28 +16,29 @@ public class Direccion
     {
     }
     public Direccion(string format){
-        string[] SplitFormat=format.Split("/");
-        Calle = SplitFormat[0];
-        Nomenclatura = SplitFormat[1];
-        Barrio =SplitFormat[2];
-        Ciudad =SplitFormat[3];
-        Edificio =SplitFormat[4];
-        Apto = SplitFormat[5];
+        string[] SplitFormat=format.Split("--");
+        
+        Calle = Convert.ToString(SplitFormat[0].Replace("_"," "));
+        Nomenclatura = SplitFormat[1].Replace("_"," ");
+        Barrio =SplitFormat[2].Replace("_"," ");
+        Ciudad =SplitFormat[3].Replace("_"," ");
+        Edificio =SplitFormat[4].Replace("_"," ");
+        Apto = SplitFormat[5].Replace("_"," ");
 
     }
 
     public Direccion(string calle, string nomenclatura, string barrio, string ciudad, string edificio, string apto)
     {
         
-        Calle = String.IsNullOrEmpty(calle)?"None":calle;
-        Nomenclatura = String.IsNullOrEmpty(nomenclatura)?"None":nomenclatura;
-        Barrio = String.IsNullOrEmpty(barrio)? "None":barrio;
-        Ciudad = String.IsNullOrEmpty(ciudad)? "None":ciudad;
-        Edificio = String.IsNullOrEmpty(edificio)?"None":edificio;
-        Apto = String.IsNullOrEmpty(apto)?"None":apto;
+        Calle = String.IsNullOrEmpty(calle)?"None":calle.Replace(" ","_");
+        Nomenclatura = String.IsNullOrEmpty(nomenclatura)?"None":nomenclatura.Replace(" ","_");
+        Barrio = String.IsNullOrEmpty(barrio)? "None":barrio.Replace(" ","_");
+        Ciudad = String.IsNullOrEmpty(ciudad)? "None":ciudad.Replace(" ","_");
+        Edificio = String.IsNullOrEmpty(edificio)?"None":edificio.Replace(" ","_");
+        Apto = String.IsNullOrEmpty(apto)?"None":apto.Replace(" ","_");
     }
 
     public string Format(){
-        return $@"{Calle}/{Nomenclatura}/{Barrio}/{Ciudad}/{Edificio}/{Apto}";
+        return $@"{Calle}--{Nomenclatura}--{Barrio}--{Ciudad}--{Edificio}--{Apto}";
     }
 }

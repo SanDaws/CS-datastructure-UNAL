@@ -55,7 +55,7 @@ public class Agenda{
         if (response != -1 && noReg<Registro.Length){
             Registro[response]= null ;
             noReg --;
-            return true;
+            return true;/
         }
 
         return false;
@@ -91,7 +91,7 @@ public class Agenda{
     }
 
     
-    public void Import(){
+    public Agenda Import(){
        using (StreamReader file = File.OpenText(filePath))
         {
             int lineCount = File.ReadAllLines(filePath).Length;
@@ -100,19 +100,23 @@ public class Agenda{
             
             while ((line = file.ReadLine()) is not null){
                 string[] data= line.Split();
+                
                 Fecha FechaObj= new Fecha(data[5]);
                 Direccion Dir= new Direccion(data[6]);
-
-                Usuario user= new Usuario(long.Parse(data[0]),
-                data[1],
+                Usuario user= new Usuario(
+                long.Parse(data[0]),
+                data[1].Replace("."," "),//
                 FechaObj,
                 data[2],
                 long.Parse(data[3]),
                 data[4],
                 Dir);
-                Agenda.Agregar(user);
+                
+                bool agregation=Agenda.Agregar(user);
+                Console.WriteLine("seed: {0}", agregation?"succede":"failed");
              
             }
+            return Agenda;
 
             
         }

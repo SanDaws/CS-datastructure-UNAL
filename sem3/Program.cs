@@ -19,6 +19,7 @@ class Program
         """);
     
         ConsoleKeyInfo option= Console.ReadKey();
+        Console.WriteLine();
         switch (option.Key)
         {
             case ConsoleKey.D1:
@@ -44,23 +45,31 @@ class Program
         Agend=seed();
         Console.WriteLine("press any key to continue...");
         Console.ReadKey();
-        Usuario[] agn= Agend.getRegistros();
+
         Console.Clear();
-        Agend.ToFile();
-        Console.WriteLine($"""
-            1: buscar
-        """);
-        
         Buscar(Agend);
+        Console.WriteLine("press any key to continue...");
+        Console.ReadKey();
+
+        Console.Clear();
+        Console.WriteLine("importando");
+        Agend.ToFile();
         
     }
-    private static void Programimport(Agenda agenda){
-        agenda.Import();
-        foreach (Usuario user in agenda.getRegistros())
-        {
-            Console.WriteLine(user.Format());
-        }
+    private static void Programimport(){
+       Agenda agenda;
+       agenda= Agenda.Import();
+        Usuario[] user= agenda.getRegistros();
+        Console.WriteLine(user[0]);
+        // foreach (Usuario use in agenda.getRegistros())
+        // {
+        //     Console.WriteLine(user.Format());
+        // }
+         Console.WriteLine("press any key to continue...");
+        Console.ReadKey();
         deleting(agenda);
+         Console.WriteLine("press any key to continue...");
+        Console.ReadKey();
         Console.WriteLine("To agenda");
         agenda.ToFile();
 
@@ -77,7 +86,7 @@ class Program
         Console.Write("numero de identificacion a buscar");
         long res= long.Parse(Console.ReadLine());
         int i=Agenda.Buscar(res);
-        if (i > 0){Console.WriteLine(i-1);}
+        if (i > -1){Console.WriteLine(i);}
         
         }
     

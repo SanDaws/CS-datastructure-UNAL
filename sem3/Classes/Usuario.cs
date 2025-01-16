@@ -20,7 +20,7 @@ public class Usuario{
 
     public Usuario(long id,string nombre,  Fecha fecha, string ciudadNacimeinto, long tel, string email, Direccion dir)
     {
-        Nombre = nombre;
+        Nombre = nombre.Replace(" ",".");
         Id = id;
         Fecha = fecha;
         CiudadNacimeinto = ciudadNacimeinto;
