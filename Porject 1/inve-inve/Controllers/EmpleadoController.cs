@@ -41,17 +41,7 @@ namespace inve_inve.Controllers;
             return db;
         }
 
-        //ir por cada uno de los empleados leyendo su lista de equipos
-            //aqui aplicaremos algoritmo de ordenamiento
-            public void AllEquipos(){
-                List<Equipo> generalInventory= new List<Equipo>();
-                //extract all the Equipos
-                foreach (Empleado Employ in Empleados){
-                    generalInventory.Concat(Employ.Inventario);
-                }
-                //TODOsort all the list
-
-            }
+       
         //Find employe by Document
         public  Empleado FindEmploye(long Documento){
             foreach (Empleado item in Empleados)
@@ -62,6 +52,13 @@ namespace inve_inve.Controllers;
             }
             return null;
         }
+
+        //create empleado
+        public void CrearEmpleado(long id,string nombre,  Fecha fecha, string ciudadNacimeinto, long tel, string email, Direccion dir){
+            Empleado empl= new Empleado( id, nombre,   fecha,  ciudadNacimeinto,  tel,  email,  dir);
+            Empleados.Add(empl);
+        }
+
 
 
 
