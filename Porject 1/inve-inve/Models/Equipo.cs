@@ -8,11 +8,11 @@ namespace inve_inve.Models
 {
     public class Equipo
     {
-        public string Placa{get;set;}
+        public int Placa{get;set;}
         public string Nombre{get;set;}
         public Fecha Fecha{get;set;}//fecha de compra
         public int Precio{get;set;}
-        public Equipo(string nombre,string placa,Fecha Fecha,int precio){
+        public Equipo(string nombre,int placa,Fecha Fecha,int precio){
             Nombre=nombre;
             Placa=placa;
             this.Fecha=Fecha;
@@ -26,7 +26,7 @@ namespace inve_inve.Models
         public Equipo(string Format){// decript from file
             string[] Obj= Format.Split("/");
             Nombre=Obj[0];
-            Placa=Obj[1];
+            Placa=int.Parse(Obj[1]);
             Fecha=new Fecha(Obj[3]);
             Precio=int.Parse(Obj[2]);
 

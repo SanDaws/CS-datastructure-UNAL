@@ -25,18 +25,9 @@ namespace inve_inve.Controllers
         }
 
         //random serial generation
-        static string GeneratePlaca()
-    {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        Random random = new Random();
-        char[] result = new char[4];
-
-        for (int i = 0; i < 4; i++)
-        {
-            result[i] = chars[random.Next(chars.Length)];
-        }
-
-        return new string(result);
+        static int GeneratePlaca(){
+         Random random = new Random();
+        return random.Next(1000, 10000);
     }
         
     }
