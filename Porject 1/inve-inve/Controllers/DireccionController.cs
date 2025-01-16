@@ -8,6 +8,7 @@ namespace inve_inve.Controllers
 {
     public class DireccionController
     {
+        public DireccionController(){}
         //Create Direccion
         public Direccion CreateDireccion(string calle, string nomenclatura, string barrio, string ciudad, string edificio, string apto){
             calle = String.IsNullOrEmpty(calle) ? "None" : calle.Replace(" ", "_");

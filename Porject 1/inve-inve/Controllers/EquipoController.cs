@@ -8,6 +8,7 @@ namespace inve_inve.Controllers
 {
     public class EquipoController
     {
+        public EquipoController(){}
         //this one dont have any file asociated to ir
         
         //Crear equipos

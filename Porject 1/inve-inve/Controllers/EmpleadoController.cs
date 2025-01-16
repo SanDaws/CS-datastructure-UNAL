@@ -9,6 +9,7 @@ namespace inve_inve.Controllers;
     public class EmpleadoController{
         public static List<Empleado> Empleados;//our database uploaded
         public static readonly string route=@"Data\Empleados.txt";
+        public EmpleadoController(){}
 
         // import from a string list
         public void LoadDatabase(){

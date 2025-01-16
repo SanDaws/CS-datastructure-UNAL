@@ -11,6 +11,7 @@ namespace inve_inve.Controllers
     {
         public static List<Credencial> Credentials;
         public static readonly string route=@"Data\Password.txt";
+        public CredencialController(){}
 
 
         //import all credentials
