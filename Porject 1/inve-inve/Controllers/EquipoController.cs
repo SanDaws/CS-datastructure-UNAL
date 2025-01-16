@@ -23,6 +23,17 @@ namespace inve_inve.Controllers
            return EquipoAprobado;
 
         }
+         //ir por cada uno de los empleados leyendo su lista de equipos
+            //aqui aplicaremos algoritmo de ordenamiento
+        public void AllEquipos(){
+                List<Equipo> generalInventory= new List<Equipo>();
+                //extract all the Equipos
+                foreach (Empleado Employ in EmpleadoController.Empleados){
+                    generalInventory.Concat(Employ.Inventario);
+                }
+                //TODOsort all the list
+
+            }
 
         //random serial generation
         static int GeneratePlaca(){
