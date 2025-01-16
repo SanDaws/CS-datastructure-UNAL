@@ -18,13 +18,52 @@ namespace inve_inve.Controllers;
             }
             
         }
-        //TODOir por cada uno de los empleados leyendo su lista de equipos
-            //aqui aplicaremos algoritmo de ordenamiento
+        // export to a string list
+        public void SaveAllinFile(List<string> formatedList){
+            FileIO.SaveFile(route,formatedList);
+        }
+        public void SaveinFile(Empleado employ){
+            string FileName= employ.Nombre+"_"+employ.Id;
+            List<string> employed=new List<string>();
+            employed.Add(employ.ToString());
+            string customRoute= $@"Out\{FileName}";
+            FileIO.SaveFile(customRoute,employed);
+            Console.WriteLine("Avaliable file in {0}",customRoute);
 
-        //TODOcreate a agregation solicitude
-        
-        //TODOcreate a elimination solicitude
-        //TODO export to a format
-        //TODO export to a string list
+        }
+
+        //export to a format
+        public List<string> FormatAll(){
+            List<string> db=new List<string>();
+            foreach (var employ in Empleados){
+                db.Add(employ.ToString());
+            }
+            return db;
+        }
+
+        //ir por cada uno de los empleados leyendo su lista de equipos
+            //aqui aplicaremos algoritmo de ordenamiento
+            public void AllEquipos(){
+                List<Equipo> generalInventory= new List<Equipo>();
+                //extract all the Equipos
+                foreach (Empleado Employ in Empleados){
+                    generalInventory.Concat(Employ.Inventario);
+                }
+                //TODOsort all the list
+
+            }
+        //Find employe by Document
+        public  Empleado FindEmploye(long Documento){
+            foreach (Empleado item in Empleados)
+            {
+                if(item.Id== Documento){
+                    return item;
+                }
+            }
+            return null;
+        }
+
+
+
         
 }
