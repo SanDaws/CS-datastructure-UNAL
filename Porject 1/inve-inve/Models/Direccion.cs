@@ -29,12 +29,12 @@ public class Direccion
     public Direccion(string calle, string nomenclatura, string barrio, string ciudad, string edificio, string apto)
     {
         
-        Calle = String.IsNullOrEmpty(calle)?"None":calle.Replace(" ","_");
-        Nomenclatura = String.IsNullOrEmpty(nomenclatura)?"None":nomenclatura.Replace(" ","_");
-        Barrio = String.IsNullOrEmpty(barrio)? "None":barrio.Replace(" ","_");
-        Ciudad = String.IsNullOrEmpty(ciudad)? "None":ciudad.Replace(" ","_");
-        Edificio = String.IsNullOrEmpty(edificio)?"None":edificio.Replace(" ","_");
-        Apto = String.IsNullOrEmpty(apto)?"None":apto.Replace(" ","_");
+        Calle = calle;
+        Nomenclatura = nomenclatura;
+        Barrio = barrio;
+        Ciudad = ciudad;
+        Edificio = edificio;
+        Apto = apto;
     }
 
     public override string ToString(){
