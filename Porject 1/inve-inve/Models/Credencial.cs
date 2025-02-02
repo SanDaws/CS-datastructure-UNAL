@@ -10,18 +10,18 @@ public class Credencial
 {
     public long Cedula { get; set; }
     private string Pass { get; set; }
-    private Role Role { get; set; }
+    private Role Rol { get; set; }
     private Credencial() { }
     public Credencial(string cedula, string pass){
         Cedula = long.Parse(cedula);
         Pass = pass;
-        Role = Role.INVESTIGADOR;
+        Rol = Role.INVESTIGADOR;
     }
     public Credencial(string Format){
         string[] obj = Format.Split(":");
         Cedula = long.Parse(obj[0]);
         Pass = obj[1];
-        Role = (obj[2]=="ADMINISTRADOR")?Role.ADMINISTRADOR:Role.ADMINISTRADOR;
+        Rol = (obj[2]=="ADMINISTRADOR")?Role.ADMINISTRADOR:Role.INVESTIGADOR;
 
     }
     public bool verifyPassword(string pss){
@@ -29,11 +29,11 @@ public class Credencial
     }
 
     public override string ToString(){
-        return $@"{Cedula}:{Pass}:{Role}";
+        return $@"{Cedula}:{Pass}:{Rol}";
     }
     public bool Rolecheck()
     {
-        if (Role != Role.ADMINISTRADOR)
+        if (Rol == Role.ADMINISTRADOR)
         {
             return true;
         }

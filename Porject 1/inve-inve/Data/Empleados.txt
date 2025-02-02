@@ -1,0 +1,5 @@
+11:German:Medellin:324:ElGerman@gmail.com:12-11-10:32--aa--envigado--Medellin--NA--NA:161388/nevera/50/23-1-2025,77994/computador/3100000/23-1-2025,154015/destornilladores/12000/23-1-2025
+456798:Daniel:Medellin:466852:dandada@gmail.com:12-10-9:84 a--45 a 15--Belen--Medellin--NA--NA:152015/libro/50/23-1-2025,84474/botas/20/23-1-2025
+33333:Humberto:Boyaca:35126:DonHugo@gmail.com:5-7-3:84A--65 b 42--la Calle--Medellin--NA--NA:146611/escuadras/7/23-1-2025
+1053289:Ignacio whatson:Medellin:321456798:Whatson&what_son@gmail.com:12-2-5:32 A--53b2--alamenas--Medellin--2--2404:85331/Lapices/20/24-1-2025,75929/impresora/450000/24-1-2025
+1010:Maria:Manizales:3154687:mari@gmail.com:5-6-97:76--83a45--alamenas--Medellin--NA--NA:40862/pc/50000/24-1-2025,102942/tv/10000/24-1-2025

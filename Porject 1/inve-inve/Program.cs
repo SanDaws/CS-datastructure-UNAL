@@ -1,4 +1,7 @@
-﻿using inve_inve.Models;
+﻿using inve_inve.Controllers;
+using inve_inve.Models;
+using inve_inve.Util;
+using inve_inve.Views;
 
 namespace inve_inve;
 
@@ -6,18 +9,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
-        Fecha fc= new Fecha(12,12,21);
-        Direccion dr= new Direccion();
-        Empleado mp= new Empleado(123,"jaime velez",fc,"bogota",321321,"jv1@gmail.com",dr);
-        Equipo eq=new Equipo("gramulo",111,Fecha.Now(),1561);
-        mp.Inventario.Add(eq);
-        mp.Inventario.Add(eq);
-        Console.WriteLine(eq.ToString());
+        EmpleadoController em= new EmpleadoController();
+        CambioController cc= new CambioController();
+        CredencialController cd= new CredencialController();
+        em.LoadDatabase();
+        cc.LoadDatabase();
+        cd.LoadDatabase();
+        
 
 
-        Console.WriteLine(mp.ToString());
-        Credencial cr=new Credencial("151681335","Pass*0");
+        Login loged=new Login();
+        Credencial logeduser= loged.LoginForm();//login
+
+        Menu menu= new Menu(logeduser);
+        menu.MainMenu();
+
 
 
         

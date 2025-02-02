@@ -26,8 +26,8 @@ namespace inve_inve.Data;
             if (File.Exists(route))
             {
                 File.WriteAllLines(route,list);
-
-                Console.WriteLine("El contenido se ha escrito exitosamente.");
+                Console.WriteLine();
+                Util.Util.GreenText("El contenido se ha escrito exitosamente.");
             }
             else
             {
@@ -39,7 +39,7 @@ namespace inve_inve.Data;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Imposible : {ex.Message}");
+            Util.Util.RedText($"Imposible : {ex.Message}");
         }
 
         }

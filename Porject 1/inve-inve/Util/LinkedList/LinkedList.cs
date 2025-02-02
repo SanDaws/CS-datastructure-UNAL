@@ -19,35 +19,42 @@ namespace inve_inve.Util.LinkedList
         Node newnode = new Node(valor);
 
         if (Cabeza == null)
-        {
-            Cabeza = newnode;
-            Cola= Cabeza.Siguiente;
-        }
-        else
-        {
-            Node actual = Cola;
-            actual.Siguiente = newnode;
-        }
+    {
+
+        Cabeza = newnode;
+        Cola = newnode;
+    }
+    else
+    {
+        Cola.Siguiente =newnode;
+        Cola= newnode;           
+    }
         
     }
-    public void Agregar(Node nodo)
+    public void 
+    Agregar(Node nodo)
     {
+        nodo.Siguiente=null;
 
         if (Cabeza == null)
         {
             Cabeza = nodo;
-            Cola= Cabeza.Siguiente;
+            Cola= nodo;
         }
         else
         {
-            Node actual = Cola;
-            actual.Siguiente = nodo;
+           Cola.Siguiente =nodo;
+            Cola= nodo;   
         }
         
     }
     public Node eliminarCabezaSoft(){
         Node node= Cabeza;
+
+        Console.WriteLine();
+        Console.WriteLine(Cabeza==null);
         Cabeza= Cabeza.Siguiente;
+        
         return node;
 
     }

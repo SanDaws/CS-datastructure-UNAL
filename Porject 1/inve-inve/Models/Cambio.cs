@@ -13,6 +13,7 @@ namespace inve_inve.Models
         public Tipo tipo;
         public string Justificacion{get;set;}
         public Estado estado;
+        public Fecha FechaCreacion=Fecha.Now();
 
         public Cambio(string solicitanteCed, Equipo equipo, Tipo tipo, string justificacion)
         {

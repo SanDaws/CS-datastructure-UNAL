@@ -22,22 +22,24 @@ namespace inve_inve.Models
         public Equipo(string nombre,int precio){
             Nombre=nombre;
             Precio=precio;
+            Fecha= Fecha.Now();
         }
         public Equipo(string Format){// decript from file
             string[] Obj= Format.Split("/");
-            Nombre=Obj[0];
-            Placa=int.Parse(Obj[1]);
-            Fecha=new Fecha(Obj[3]);
+            Placa=int.Parse(Obj[0]);
+            Nombre=Obj[1];
             Precio=int.Parse(Obj[2]);
+            Fecha=new Fecha(Obj[3]);
 
         }
         public static List<Equipo> ImportFromFile(string arr){
             List<Equipo> equipos= new List<Equipo>();
             string[] objects= arr.Split(",");
-            
-            foreach (string item in objects){
+            Console.WriteLine(string.IsNullOrEmpty(objects[0]));
+            if(!string.IsNullOrEmpty(objects[0])){
+                foreach (string item in objects){
                 equipos.Add(new Equipo(item));                
-            }           
+            }     }      
             return equipos;
 
         }

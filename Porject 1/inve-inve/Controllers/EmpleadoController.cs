@@ -7,7 +7,7 @@ using inve_inve.Models;
 
 namespace inve_inve.Controllers;
     public class EmpleadoController{
-        public static List<Empleado> Empleados;//our database uploaded
+        public static List<Empleado> Empleados= new List<Empleado>();//our database uploaded
         public static readonly string route=@"Data\Empleados.txt";
         public EmpleadoController(){}
 
@@ -23,14 +23,15 @@ namespace inve_inve.Controllers;
         public void SaveAllinFile(List<string> formatedList){
             FileIO.SaveFile(route,formatedList);
         }
-        public void SaveinFile(Empleado employ){
+        //export all to file
+        public string SaveinFile(Empleado employ){
             string FileName= employ.Nombre+"_"+employ.Id;
             List<string> employed=new List<string>();
             employed.Add(employ.ToString());
-            string customRoute= $@"Out\{FileName}";
+            string customRoute= $@"Out\{FileName}.txt";
             FileIO.SaveFile(customRoute,employed);
-            Console.WriteLine("Avaliable file in {0}",customRoute);
-
+            Console.WriteLine($"Avaliable file in {0}",customRoute);
+            return customRoute;
         }
 
         //export to a format
@@ -41,8 +42,6 @@ namespace inve_inve.Controllers;
             }
             return db;
         }
-
-       
         //Find employe by Document
         public  Empleado FindEmploye(long Documento){
             foreach (Empleado item in Empleados)
@@ -56,12 +55,21 @@ namespace inve_inve.Controllers;
 
         //create empleado
         public void CrearEmpleado(long id,string nombre,  Fecha fecha, string ciudadNacimeinto, long tel, string email, Direccion dir){
-            Empleado empl= new Empleado( id, nombre,   fecha,  ciudadNacimeinto,  tel,  email,  dir);
-            Empleados.Add(empl);
+            Empleados.Add(new Empleado( id, nombre,   fecha,  ciudadNacimeinto,  tel,  email,  dir));
+            Util.Util.GreenText("Usuario creado satisfacoriamente");
         }
-
-
-
-
+        public bool eliminarEmpleado(long Document){
+            Empleado? emp= FindEmploye(Document);
+            if (emp !=null)
+            {
+                Empleados.Remove(emp);
+                return true;
+            }
+            else
+            {
+                Util.Util.RedText("Empleado no encontrado");
+                return false;
+            }
+        }
         
 }

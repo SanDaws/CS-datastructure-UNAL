@@ -33,8 +33,8 @@ public class Direccion
         Nomenclatura = nomenclatura;
         Barrio = barrio;
         Ciudad = ciudad;
-        Edificio = edificio;
-        Apto = apto;
+        Edificio = string.IsNullOrEmpty(edificio)?"NA":edificio;
+        Apto = string.IsNullOrEmpty(edificio)?"NA":apto;
     }
 
     public override string ToString(){

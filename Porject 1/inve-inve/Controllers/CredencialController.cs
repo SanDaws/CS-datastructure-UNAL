@@ -9,7 +9,7 @@ namespace inve_inve.Controllers
 {
     public class CredencialController
     {
-        public static List<Credencial> Credentials;
+        public static List<Credencial> Credentials= new List<Credencial>();
         public static readonly string route=@"Data\Password.txt";
         public CredencialController(){}
 
@@ -18,6 +18,7 @@ namespace inve_inve.Controllers
         public void LoadDatabase(){
             List<string> db= FileIO.UploadFile(route);
             foreach (string CredentialFormat in db){
+                Console.WriteLine(CredentialFormat);
                 Credentials.Add(new Credencial(CredentialFormat));
             }
         }
@@ -45,15 +46,16 @@ namespace inve_inve.Controllers
         
         //Check for credential by document
         public Credencial Login(string cedula, string pass){
+            Console.WriteLine(cedula);
             Credencial? cre=FindCredencial(cedula);
-            if (Credentials != null)
+            if (cre != null)
             {
                 if(cre.verifyPassword(pass)){return cre;}
             }
             return null;//user or password incorrect
 
         }
-        public Credencial FindCredencial(string cedula){
+        public Credencial? FindCredencial(string cedula){
             foreach (Credencial item in Credentials)
             {
                 if(item.Cedula== long.Parse(cedula)){
@@ -61,6 +63,16 @@ namespace inve_inve.Controllers
                 }
             }
             return null;
+        }
+        public void DeleteCredentials(Credencial cre){
+            if(cre != null){
+                Credentials.Remove(cre);
+            Util.Util.GreenText($@"{cre.Cedula} eliminado satiasfacoriamente");
+            }
+            else
+            {
+                Util.Util.RedText("Imposible eliminar");
+            }
         }
         
     }
