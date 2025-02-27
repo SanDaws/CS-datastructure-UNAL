@@ -17,7 +17,7 @@ namespace sem8.Util
         }
         public override string ToString()
         {
-            return $@"Data: {data} key: {Key}";
+            return $@"Data: {data.ToString()} key: {Key}";
         }
     }
 }

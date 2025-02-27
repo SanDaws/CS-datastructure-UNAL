@@ -24,5 +24,13 @@ namespace sem8.classes
             }
             return c;
         }
+        public override string ToString()
+        {
+            return $@"
+                nombre:{Nombre}
+                documento: {Identificacion}
+                llave: {key}
+            ";
+        }
     }
 }

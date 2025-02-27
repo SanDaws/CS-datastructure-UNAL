@@ -56,7 +56,7 @@ namespace sem8.classes
             PrintTreeRec(bst.Root(), 0);
         }
 
-        private void PrintTreeRec(Node root, int space)
+        protected void PrintTreeRec(Node root, int space)
         {
             const int COUNT = 4; // Espacio entre niveles
             if (root == null)

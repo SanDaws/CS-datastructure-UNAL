@@ -39,7 +39,22 @@ class Program
         pb.Ordenado();
         Console.ReadKey();
         Console.WriteLine();
-
+        problema2 problem2=new problema2();
+        Per_sona p1= new Per_sona("Alberto","123");
+        Per_sona p2= new Per_sona("Santiago","65463");
+        Per_sona p3= new Per_sona("Ramiro","894651");
+        Per_sona p5= new Per_sona("Michale","45266872");
+        Per_sona p4= new Per_sona("Sebastian","218612");
+        Per_sona p6= new Per_sona("Alberto","235485");
+        Per_sona p7= new Per_sona("Vanessa","98415");
+        problem2.bst.insert(p1,p1.key);
+        problem2.bst.insert(p2,p2.key);
+        problem2.bst.insert(p3,p3.key);
+        problem2.bst.insert(p4,p4.key);
+        problem2.bst.insert(p5,p5.key);
+        problem2.bst.insert(p6,p6.key);
+        problem2.bst.insert(p7,p7.key);
+        problem2.Bigest();
 
 
 
