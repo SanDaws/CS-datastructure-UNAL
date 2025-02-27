@@ -1,24 +1,23 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace sem6.Classes.LinkedList;
-public class LinkedList
+namespace sem6.Classes.LinkedList
 {
-    public Node Cabeza;
-    public Node Cola;
+    public class DoubleLinkedList{
+    public DobleNode Cabeza;
+    public DobleNode Cola;
     private int size;
 
-    public LinkedList(){
+    public DoubleLinkedList(){
         Cabeza= null;
         Cola=null;
         size =0;
     }
     public void Agregar(object valor)
     {
-        Node newnode = new Node(valor);
+        DobleNode newnode = new DobleNode(valor);
 
         if (Cabeza == null)
     {
@@ -34,7 +33,7 @@ public class LinkedList
     size++;
         
     }
-    public void Agregar(Node nodo) {
+    public void Agregar(DobleNode nodo) {
         nodo.Siguiente=null;
 
         if (Cabeza == null)
@@ -50,48 +49,31 @@ public class LinkedList
     size++;
         
     }
-    public Node Shift(){
-        Node node= Cabeza;
-        if (Cabeza== null)
-        {
-            return null;
-        }
+    public DobleNode Shift(){
+        DobleNode node= Cabeza;
+
+
         Cabeza= Cabeza.Siguiente;
-
-
-        return node;
-
-    }
-    public Node Pop(){
-        Node node;
         
-         if (Cabeza == null) {
-        return null;
-    }
-
-    if (Cabeza.Siguiente == null) {
-        node = Cabeza;
-        Cabeza = null;
-        Cola = null;
         return node;
+
     }
+    public DobleNode Pop(){
+        DobleNode node= Cola;
+        Cola= null;
+        DobleNode actual= Cabeza;
+        if(actual!=null){
+            while (actual.Siguiente != null){
+            actual=actual.Siguiente;   
+            }
+        }
+        Cola=actual;
+        
+        return node;
 
-
-    Node actual = Cabeza;
-    while (actual.Siguiente != Cola) {
-        actual = actual.Siguiente;
     }
-
-    node = Cola;
-
-    actual.Siguiente = null;
-    Cola = actual;
-
-    return node;
-    }
-
     public void Unshift(object valor){
-        Node node= new Node(valor);
+        DobleNode node= new DobleNode(valor);
         node.Siguiente= Cabeza;
         Cabeza=node;
     }
@@ -105,5 +87,6 @@ public class LinkedList
         }
         return false;
         
+    }
     }
 }
